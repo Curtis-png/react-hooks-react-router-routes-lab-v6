@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+//home.js//
+import { Outlet, useOutletContext } from "react-router-dom";
+import UserCard from "../components/UserCard";
 
 function Home() {
+  const users = useOutletContext();
+  const userList = users.map((user) => <UserCard key={user.id} user={user} />);
+
   return (
     <>
-      <header>
-        {/* What component should go here? */}
-      </header>
       <main>
-        {/* Info goes here! */}
+        <h1>Home!</h1>
+        <Outlet context={users} />
+        {userList}
       </main>
     </>
   );
-};
+}
 
 export default Home;
